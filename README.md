@@ -1,64 +1,62 @@
-# 🧠 Breast Cancer Detection using Artificial Neural Networks (ANN)
+# 🧠 Breast Cancer Prediction using ANN
 
-This project builds an Artificial Neural Network (ANN) to predict whether a breast tumor is **benign** or **malignant** using the Breast Cancer Wisconsin dataset. It demonstrates the full ML pipeline from data preprocessing to deployment-ready model prediction.
-
----
-
-## 📌 Problem Statement
-
-Early and accurate detection of breast cancer is crucial for patient survival. This project uses machine learning to classify tumors based on their characteristics, helping support early diagnosis and treatment planning.
+This project builds an Artificial Neural Network (ANN) to predict breast cancer (Malignant or Benign) using the well-known Breast Cancer Wisconsin dataset from `sklearn.datasets`.
 
 ---
 
-## 🧪 Tech Stack
+## 📌 Table of Contents
 
-- Python
-- Libraries: `NumPy`, `Pandas`, `Seaborn`, `Matplotlib`
-- Scikit-learn
-- TensorFlow / Keras
-- Deployment Tools: `joblib`, `.keras` model saving
-
----
-
-## 📁 Dataset
-
-Dataset used is **Breast Cancer Wisconsin (Diagnostic)** from `sklearn.datasets`.
-
-- 🔬 Features: 30 numerical features like radius, texture, smoothness, symmetry, etc.
-- 🎯 Target:  
-  - 0 = **Malignant (Dangerous)**  
-  - 1 = **Benign (Not Dangerous)**
+- [Overview](#overview)
+- [Dataset](#dataset)
+- [Model Architecture](#model-architecture)
+- [Installation](#installation)
+- [How to Use](#how-to-use)
+- [Demo](#demo)
+- [Project Structure](#project-structure)
+- [License](#license)
 
 ---
 
-## 🚀 Project Workflow
+## 📖 Overview
 
-1. **Data Loading** and Exploration using Pandas and Seaborn  
-2. **Data Preprocessing**:
-   - Null value check
-   - Standardization using `StandardScaler`
-3. **Model Building**:
-   - ANN with 2 hidden layers (`ReLU` activation)
-   - Output layer with `sigmoid` activation
-4. **Model Training**:
-   - Optimizer: `Adam`
-   - Loss: `binary_crossentropy`
-   - Epochs: 200, Batch size: 16
-5. **Evaluation**:
-   - Accuracy on test data
-   - `model.evaluate()` results printed
-6. **Deployment Preparation**:
-   - Trained model saved as `.keras`
-   - Scaler saved using `joblib`
-7. **User Prediction System**:
-   - Takes 30 input features from user
-   - Predicts tumor type using trained model
+Breast cancer is one of the most common cancers affecting women worldwide. Early detection and diagnosis play a vital role in increasing the chances of successful treatment.
+
+This project utilizes a basic ANN built with TensorFlow/Keras to predict the type of tumor using 30 numerical features derived from digitized images of a fine needle aspirate (FNA) of a breast mass.
 
 ---
 
-## 🧪 Example Prediction (Terminal Input/Output)
+## 📊 Dataset
+
+- 📦 Source: `sklearn.datasets.load_breast_cancer()`
+- 💡 Features: 30 numerical attributes (mean, standard error, worst of various cell measurements)
+- 🎯 Target: 
+  - 0: Malignant (dangerous)
+  - 1: Benign (non-cancerous)
+
+---
+
+## 🏗️ Model Architecture
+
+The ANN is a simple feedforward network:
+
+- **Input Layer:** 30 features
+- **Hidden Layer 1:** 16 neurons, ReLU activation
+- **Hidden Layer 2:** 8 neurons, ReLU activation
+- **Output Layer:** 1 neuron, Sigmoid activation
+
+Compiled with:
+- **Loss Function:** `binary_crossentropy`
+- **Optimizer:** Adam (learning rate = 0.001)
+- **Metric:** Accuracy
+
+---
+
+## ⚙️ Installation
+
+Clone the repo and install the dependencies:
 
 ```bash
-Enter 30 features as a list (e.g., [17.99, 10.38, ..., 0.0]):
+git clone https://github.com/<your-username>/<repo-name>.git
+cd <repo-name>
+pip install -r requirements.txt
 
-Prediction: Benign (Class 1)
